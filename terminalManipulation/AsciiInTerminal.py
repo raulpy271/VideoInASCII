@@ -1,21 +1,7 @@
 import curses
 
-my_ascii = """
-asddasdassa
-asdasasasasffaafs fas   assgd   fsdfsd  fsdfsf fdsdsfd
-sdfsfdsfd
 
-as
-
-d
-
-d"""
-
-
-
-
-
-class TerminalWindow():
+class AsciiWindow():
     def __init__(self):
         self.stdscr = curses.initscr()
 
@@ -25,7 +11,13 @@ class TerminalWindow():
         self.stdscr.refresh()
 
 
-    def returnOriginalState(self):
+    def setAscii(self, asciiString):
+        self.clearTerminal()
+        self.stdscr.addstr(asciiString)
+        self.stdscr.refresh()
+
+
+    def exit(self):
         curses.nocbreak()
         curses.echo()
         curses.endwin()
