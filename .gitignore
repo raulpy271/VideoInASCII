@@ -1,0 +1,6 @@
+__pycache__
+
+
+# vim files
+*.vim
+*.swp
