@@ -11,7 +11,7 @@ from ..utils.constants import (
     videoResizedPath) 
 
 
-def resizeVideo(videoPath):
+def resizeVideo():
     newResolution = (
         getNewVideoResolution(getVideoResolution(videoPath)))
     evenResolution = forceResolutionBeDivisibleBy2(newResolution)

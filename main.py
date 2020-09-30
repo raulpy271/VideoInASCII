@@ -1,11 +1,18 @@
 from sys import argv
 from os.path import isfile
 
+from src.videoManipulation.resizeVideo import resizeVideo
 from src.utils.constants import videoPath
+from src.utils.tempFiles import (
+    createTempDir,
+    removeTempDir)
 
 
 def main():
-    print(videoPath)
+    createTempDir()
+    resizeVideo()
+    print("video resized")
+
 
 
 def getVideoPath():
