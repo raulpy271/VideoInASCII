@@ -1,5 +1,7 @@
 __pycache__
 
+# videos examples
+*.mp4
 
 # vim files
 *.vim
