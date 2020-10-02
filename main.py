@@ -1,12 +1,11 @@
 from sys import argv
 from os.path import isfile
+from time import sleep
 
 from src.videoManipulation.resizeVideo import resizeVideo
 from src.videoManipulation.extractFrames import getArrayFromResizedVideo
 from src.terminalManipulation.asciiLoop import loopInArrayOfAsciiArt
-from src.videoManipulation.extractAscii import (
-    convertImageArray2asciiArt,
-    convertVideoArray2asciiArtList)
+from src.videoManipulation.extractAscii import convertVideoArray2asciiArtList
 from src.utils.constants import videoPath
 from src.utils.tempFiles import (
     createTempDir,
@@ -14,9 +13,22 @@ from src.utils.tempFiles import (
 
 
 def main():
+    print("\nloading video")
+
+
+    removeTempDir()
     createTempDir()
     resizeVideo()
-    print("video resized")
+    video = getArrayFromResizedVideo()
+    videoAscii = convertVideoArray2asciiArtList(video)
+    print(
+        "\nvideo loaded" +
+        "\nentering in the loop, press C-d to cancel the ascii loop")
+
+
+    sleep(1)
+    loopInArrayOfAsciiArt(videoAscii)
+    removeTempDir()
 
 
 

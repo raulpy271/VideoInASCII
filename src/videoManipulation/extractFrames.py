@@ -2,7 +2,9 @@ import ffmpeg
 import numpy 
 
 from ..utils.videoResolution import getVideoResolution
-from ..utils.constants import videoResizedPath 
+from ..utils.constants import (
+    videoResizedPath,
+    ffmpegGlobalArguments)
 
 
 def getArrayFromResizedVideo():
@@ -15,6 +17,7 @@ def getArrayFromResizedVideo():
 def extractBytesFromResizedVideo():
     stream = ffmpeg.input(videoResizedPath)
     stream = ffmpeg.output(stream, 'pipe:', format='rawvideo', pix_fmt='rgb24')
+    stream = stream.global_args(*ffmpegGlobalArguments)
     videoBytes, _ = ffmpeg.run(stream, capture_stdout=True)
     return videoBytes
 

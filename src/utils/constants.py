@@ -5,3 +5,4 @@ videoPath = defaultPath
 videoResizedPath = tempDir + "videoResized.mp4"
 videoResizedFrameRate = 15
 ascii_chars = ('.', '^', '&', 'X', '#')
+ffmpegGlobalArguments = ['-y', '-loglevel', '16']
