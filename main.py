@@ -3,6 +3,7 @@ from os.path import isfile
 
 from src.videoManipulation.resizeVideo import resizeVideo
 from src.videoManipulation.extractFrames import getArrayFromResizedVideo
+from src.terminalManipulation.asciiLoop import loopInArrayOfAsciiArt
 from src.videoManipulation.extractAscii import (
     convertImageArray2asciiArt,
     convertVideoArray2asciiArtList)

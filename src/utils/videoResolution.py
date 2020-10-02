@@ -39,6 +39,3 @@ def getNewVideoResolution(videoResolution):
         )
 
 
-
-
-  
