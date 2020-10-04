@@ -27,7 +27,7 @@ def convertVideoBytes2numpyArray(videoBytes):
 
 
 def reshapeVideoArray(videoArray, videoResolution):
-    height, width = videoResolution
+    width, height = videoResolution
     return videoArray.reshape([-1, height, width, 3])
 
 
