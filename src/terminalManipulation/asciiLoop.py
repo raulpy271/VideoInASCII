@@ -6,8 +6,9 @@ from ..utils.constants import videoResizedFrameRate
 
 def loopInArrayOfAsciiArt(arrayOfAsciiArt):
     terminal = AsciiWindow()
+    timeToSleepInEachFrame = 1/videoResizedFrameRate
     for frame in arrayOfAsciiArt:
         terminal.setAscii(frame)
-        sleep(1/videoResizedFrameRate)
+        sleep(timeToSleepInEachFrame)
     terminal.exit()
 
