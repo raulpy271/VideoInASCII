@@ -12,12 +12,11 @@ from src.utils.tempFiles import (
 
 
 def helpMessage():
-    print("the \"" + videoPath + "\" file doesnt exist")
+    print("the \"" + videoPath.getVideoPath() + "\" file doesnt exist")
 
 
-def main():
+def main(videoAscii):
     print("\nloading video")
-    videoAscii = getAsciiArray()
     loopInArrayOfAsciiArt(videoAscii)
     removeTempDir()
 
@@ -35,14 +34,16 @@ def getVideoPath():
     try:
         userVideoPathArgument = str(argv[1])
     except: 
-        userVideoPathArgument = videoPath
+        userVideoPathArgument = videoPath.getVideoPath()
     finally:
         return userVideoPathArgument
 
 
 if __name__ == "__main__":
-    videoPath = getVideoPath()
-    if not isfile(videoPath):
+    videoPath.setVideoPath(getVideoPath())
+    if not isfile(videoPath.getVideoPath()):
         helpMessage()
-    else: main()
+    else: 
+        videoAscii = getAsciiArray()
+        main(videoAscii)
 

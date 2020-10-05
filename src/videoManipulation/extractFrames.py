@@ -1,5 +1,5 @@
 import ffmpeg
-import numpy 
+from numpy import (frombuffer, uint8)
 
 from ..utils.videoResolution import getVideoResolution
 from ..utils.constants import (
@@ -23,7 +23,7 @@ def extractBytesFromResizedVideo():
 
 
 def convertVideoBytes2numpyArray(videoBytes):
-    return numpy.frombuffer(videoBytes, numpy.uint8)
+    return frombuffer(videoBytes, uint8)
 
 
 def reshapeVideoArray(videoArray, videoResolution):

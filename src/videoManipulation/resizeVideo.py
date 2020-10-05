@@ -14,14 +14,14 @@ from ..utils.constants import (
 
 def resizeVideo():
     newResolution = (
-        getNewVideoResolution(getVideoResolution(videoPath)))
+        getNewVideoResolution(getVideoResolution(videoPath.getVideoPath())))
     evenResolution = forceResolutionBeDivisibleBy2(newResolution)
     outputArguments = {
         'r' : videoResizedFrameRate,
         'vf' : 
             'scale=' + tupleOfResolution2String(evenResolution)
         }
-    stream = ffmpeg.input(videoPath)
+    stream = ffmpeg.input(videoPath.getVideoPath())
     stream = ffmpeg.output(stream, videoResizedPath, **outputArguments )
     stream = stream.global_args(*ffmpegGlobalArguments)
 
