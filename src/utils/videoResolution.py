@@ -2,10 +2,6 @@ from os import get_terminal_size
 
 import ffmpeg
 
-from .constants import videoPath
-
-
-
 
 def getVideoResolution(videoPath):
     jsonRepresentationOfVideo = (
@@ -16,10 +12,8 @@ def getVideoResolution(videoPath):
         )
 
 
-
-
 def getNewVideoResolution(videoResolution):
-    terminalResolution = get_terminal_size()
+    terminalResolution = get_terminal_size_without_border()
     tupleOfaspectRatio = (
         videoResolution[0] / terminalResolution[0],
         videoResolution[1] / terminalResolution[1])
@@ -37,5 +31,12 @@ def getNewVideoResolution(videoResolution):
             videoResolution[1] / biggestAspecRatio)
             )
         )
+
+
+def get_terminal_size_without_border():
+    terminalSize = get_terminal_size()
+    borderValue = 1
+    return tuple(
+            map((lambda x : x - borderValue), terminalSize))
 
 
