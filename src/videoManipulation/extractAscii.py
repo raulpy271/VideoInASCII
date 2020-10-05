@@ -13,8 +13,8 @@ def convertVideoArray2asciiArtList(videoArray):
 
 def convertImageArray2asciiArt(imageArray):
     asciiArt = ''
-    for y in range(0, imageArray.shape[1]):
-        for x in range(0, imageArray.shape[0]):
+    for x in range(imageArray.shape[0]):
+        for y in range(imageArray.shape[1]):
             asciiArt += convertPixel2char(imageArray[x][y])
         asciiArt += '\n'
     return asciiArt
