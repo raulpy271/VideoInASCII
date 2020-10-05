@@ -1,6 +1,5 @@
 from sys import argv
 from os.path import isfile
-from time import sleep
 
 from src.videoManipulation.resizeVideo import resizeVideo
 from src.videoManipulation.extractFrames import getArrayFromResizedVideo
@@ -12,24 +11,24 @@ from src.utils.tempFiles import (
     removeTempDir)
 
 
+def helpMessage():
+    print("the \"" + videoPath + "\" file doesnt exist")
+
+
 def main():
     print("\nloading video")
+    videoAscii = getAsciiArray()
+    loopInArrayOfAsciiArt(videoAscii)
+    removeTempDir()
 
 
+def getAsciiArray():
     removeTempDir()
     createTempDir()
     resizeVideo()
     video = getArrayFromResizedVideo()
     videoAscii = convertVideoArray2asciiArtList(video)
-    print(
-        "\nvideo loaded" +
-        "\nentering in the loop, press C-d to cancel the ascii loop")
-
-
-    sleep(1)
-    loopInArrayOfAsciiArt(videoAscii)
-    removeTempDir()
-
+    return videoAscii
 
 
 def getVideoPath():
@@ -44,6 +43,6 @@ def getVideoPath():
 if __name__ == "__main__":
     videoPath = getVideoPath()
     if not isfile(videoPath):
-        print("the \"" + videoPath + "\" file doesnt exist")
+        helpMessage()
     else: main()
 
