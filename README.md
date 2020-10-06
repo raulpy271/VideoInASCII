@@ -1,6 +1,6 @@
 # VideoInASCII
 
-this program show a video in terminal with ascii-art style. Are used the ffmpeg library and numpy arrays.
+this program show a video in terminal with ascii-art style. Are used the ffmpeg library to resize the video automatically in the size of your terminal and numpy arrays to load pixels of the video.
 
 ## Example
 
@@ -22,5 +22,6 @@ Or pass your path as a command line argument:
 $ python main.py <path_of_your_video>
 ```
 
+In the constants file you can chage some settings, like video path, frame rate and chars used in ascii art.
 
 
