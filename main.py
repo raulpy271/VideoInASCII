@@ -16,7 +16,6 @@ def helpMessage():
 
 
 def main(videoAscii):
-    print("\nloading video")
     loopInArrayOfAsciiArt(videoAscii)
     removeTempDir()
 
@@ -44,6 +43,7 @@ if __name__ == "__main__":
     if not isfile(videoPath.getVideoPath()):
         helpMessage()
     else: 
+        print("\nloading video")
         videoAscii = getAsciiArray()
         main(videoAscii)
 
