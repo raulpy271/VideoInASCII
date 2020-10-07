@@ -1,29 +1,25 @@
-import ffmpeg
 from numpy import (frombuffer, uint8)
 
-from ..utils.videoResolution import getVideoResolution
-from ..utils.constants import (
-    videoResizedPath,
-    ffmpegGlobalArguments)
+from ..videoManipulation.resizeVideo import resizedVideoResolution
+from ..utils.constants import videoResizedPath
 
 
 def getArrayFromResizedVideo():
     videoBytes = extractBytesFromResizedVideo()
     videoArray = convertVideoBytes2numpyArray(videoBytes)
-    videoResolution = getVideoResolution(videoResizedPath)
+    videoResolution = resizedVideoResolution()
     return reshapeVideoArray(videoArray, videoResolution)
 
 
 def extractBytesFromResizedVideo():
-    stream = ffmpeg.input(videoResizedPath)
-    stream = ffmpeg.output(stream, 'pipe:', format='rawvideo', pix_fmt='rgb24')
-    stream = stream.global_args(*ffmpegGlobalArguments)
-    videoBytes, _ = ffmpeg.run(stream, capture_stdout=True)
-    return videoBytes
+    with open(videoResizedPath, 'rb') as videoBytesObject:
+        videoBytes = videoBytesObject.read()
+        return videoBytes
 
 
 def convertVideoBytes2numpyArray(videoBytes):
-    return frombuffer(videoBytes, uint8)
+    videoArray = frombuffer(videoBytes, uint8)
+    return videoArray 
 
 
 def reshapeVideoArray(videoArray, videoResolution):
