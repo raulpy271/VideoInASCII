@@ -16,7 +16,7 @@ def helpMessage():
 
 
 def main(videoAscii):
-    loopInArrayOfAsciiArt(videoAscii)
+    loopInArrayOfAsciiArt(videoAscii, canRepeat())
     removeTempDir()
 
 
@@ -36,6 +36,13 @@ def getVideoPath():
         userVideoPathArgument = videoPath.getVideoPath()
     finally:
         return userVideoPathArgument
+
+
+def canRepeat():
+    try:
+        return "--repeat" in argv or "-R" in argv
+    except: 
+        return False
 
 
 if __name__ == "__main__":
