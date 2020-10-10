@@ -1,6 +1,8 @@
 from statistics import mean
 
-from ..utils.constants import ascii_chars
+from ..utils.constants import (
+    ascii_chars,
+    messageInTheEndOfScreen)
 
 
 def convertVideoArray2asciiArtList(videoArray):
@@ -17,6 +19,7 @@ def convertImageArray2asciiArt(imageArray):
         for y in range(imageArray.shape[1]):
             asciiArt += convertPixel2char(imageArray[x][y])
         asciiArt += '\n'
+    asciiArt += messageInTheEndOfScreen
     return asciiArt
 
 

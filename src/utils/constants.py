@@ -3,8 +3,11 @@ defaultPath = 'ballet.mp4'
 videoResizedPath = tempDir + "videoResized.raw"
 videoResizedFrameRate = 10
 showAllErrorsFlag = '16'
+screenBorder = 2
 ffmpegGlobalArguments = ['-y', '-loglevel', showAllErrorsFlag]
 ascii_chars = ('X', '#', '&', '^', '.', ' ')
+keyToInterruptTheExecutation = ord('\n')
+messageInTheEndOfScreen = 'Press ENTER to exit'
 
 
 class VideoPath():

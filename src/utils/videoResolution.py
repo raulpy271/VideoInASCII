@@ -2,6 +2,8 @@ from os import get_terminal_size
 
 import ffmpeg
 
+from .constants import screenBorder
+
 
 def getVideoResolution(videoPath):
     jsonRepresentationOfVideo = (
@@ -37,6 +39,6 @@ def get_terminal_size_without_border():
     terminalSize = get_terminal_size()
     borderValue = 1
     return tuple(
-            map((lambda x : x - borderValue), terminalSize))
+            map((lambda x : x - screenBorder), terminalSize))
 
 
