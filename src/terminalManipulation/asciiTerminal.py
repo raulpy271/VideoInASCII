@@ -4,6 +4,8 @@ import curses
 class AsciiWindow():
     def __init__(self):
         self.stdscr = curses.initscr()
+        curses.cbreak()
+        curses.noecho()
 
 
     def clearTerminal(self):
@@ -15,6 +17,11 @@ class AsciiWindow():
         self.clearTerminal()
         self.stdscr.addstr(asciiString)
         self.stdscr.refresh()
+
+
+    def waitForAChar(self, milisseconds):
+        self.stdscr.timeout(milisseconds)
+        return self.stdscr.getch()
 
 
     def exit(self):
