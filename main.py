@@ -22,9 +22,9 @@ def helpMessage():
 """This program read a video and show it in terminal with ascii art style.
 Usage: python main.py [<video_path>] [-R | --repeat] [-H | --help]
 
-    video_path : path of your video, if dont passed the default path are {videoPath}
-    -R | --repeat : to repeat the video indefitely, if dont passed then dont repeat.
-    -H | --help : show this message
+    video_path : path of your video, if not passed, the default path are {videoPath}.
+    -R | --repeat : to repeat the video indefitely. if not passed, it does not repeat.
+    -H | --help : show this message.
 
 Read more in the README file.
 """.format(
